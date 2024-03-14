@@ -25,12 +25,12 @@ for line in lines:
     line = line.lower()
     processed_output.append(line)
 
-# print(processed_output)
+print(processed_output)
 
 # Dicionário para armazenar os padrões de habilidades
 patterns = {
     "age": r"age: (\d+)",
-    "quality": r"Quality: \w+ = = (\d+)%",
+    "quality": r"=\s*(\d+)%",
     "tackling": r'tackling (\d+)%',
     "marking": r'marking (\d+)%',
     "positioning": r'positioning (\d+)%',
