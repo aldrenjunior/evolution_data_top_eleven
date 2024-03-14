@@ -29,6 +29,8 @@ for line in lines:
 
 # Dicionário para armazenar os padrões de habilidades
 patterns = {
+    "age": r"age: (\d+)",
+    "quality": r"Quality: \w+ = = (\d+)%",
     "tackling": r'tackling (\d+)%',
     "marking": r'marking (\d+)%',
     "positioning": r'positioning (\d+)%',
