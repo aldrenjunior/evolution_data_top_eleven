@@ -19,10 +19,9 @@ lines = extracted_text.strip().split('\n')
 
 # Preprocessamento das linhas
 processed_output = []
+
 for line in lines:
-    # Remover espaços em branco extras
-    line = line.strip()
-    line = line.lower()
+    line = line.strip().lower()
     processed_output.append(line)
 
 print(processed_output)
