@@ -12,25 +12,27 @@ image_dir = "img/"
 all_extracted_text = []
 
 # box = (xa, ya, xb, yb)
-box_defense = (390, 260, 615, 490)
-box_attack = (615, 260, 840, 490)
-box_physic = (840, 260, 1065, 490)
 
-boxs = (box_defense, box_attack, box_physic)
+boxes = {
+    'name': (395, 40, 655, 85),
+    'defense': (390, 260, 615, 490),
+    'attack': (615, 260, 840, 490),
+    'physic': (840, 260, 1065, 490)
+}
 
 for img in os.listdir(image_dir):
     if img:
         img_path = os.path.join(image_dir, img)
 
-        for box in boxs:
+        for box in boxes.values():
             extracted_text = extract_text_from_image(img_path, box)
             all_extracted_text.extend(extracted_text)
+
 
 # Dicionário para armazenar os padrões de habilidades
 patterns = {
     "age": r"age: (\d+)",
     "quality": r"=\s*(\d+)%",
-
     "tackling": r'tackling (\d+)%',
     "marking": r'marking (\d+)%',
     "positioning": r'positioning (\d+)%',
@@ -54,6 +56,8 @@ for line in all_extracted_text:
 
     if not line:
         continue
+
+    info_player['name'] = all_extracted_text[0]
 
     for skill, pattern in patterns.items():
         match = re.search(pattern, line)
